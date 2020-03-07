@@ -4,7 +4,7 @@ const path = require("path")
 const fs = require("fs")
 
 let app = express()
-let PORT = 8080
+let PORT = process.env.PORT || 8080
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
