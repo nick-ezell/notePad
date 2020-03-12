@@ -36,11 +36,6 @@ body {
   font-size: 3rem;
 }
 
-.note-title:-moz-read-only,
-.note-textarea:-moz-read-only {
-  color: #757575;
-}
-
 .note-title:read-only,
 .note-textarea:read-only {
   color: #757575;
@@ -92,4 +87,3 @@ textarea {
   background-image: url("../notepad.png");
   background-size: cover;
 }
-/*# sourceMappingURL=styles.css.map */

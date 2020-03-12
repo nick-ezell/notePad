@@ -38,22 +38,43 @@ app.post("/api/notes", function(req, res) {
     }
     //Parsing file
     let parsedData = JSON.parse(data);
-    //Giving the note a unique ID number
-    newNote.ID = parsedData.length + 1;
     //Pushing new note object from POST request into saved array in db.json
     parsedData.push(newNote);
-    console.log(parsedData);
+    //Giving the note a unique ID number
+    for (let note of parsedData) {
+      note.id = parsedData.indexOf(note);
+    }
     //Writing newly generated database object to db.json
     fs.writeFile("./db.json", JSON.stringify(parsedData), function(err) {
       if (err) {
         console.log(err);
-      } else {
-        console.log("File successfully overwritten");
       }
     });
   });
+});
 
-  // console.log(newNote);
+app.delete("/api/notes/:id", function(req, res) {
+  let id = req.params.id;
+  let idInt = parseInt(id);
+
+  fs.readFile("./db.json", "utf8", function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+    let dbArr = JSON.parse(data);
+
+    for (let note of dbArr) {
+      if (note.id === idInt) {
+        let newDB = dbArr.filter(note => note.id !== idInt);
+
+        fs.writeFile("./db.json", JSON.stringify(newDB), function(err) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      }
+    }
+  });
 });
 
 app.listen(PORT, function() {

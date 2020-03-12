@@ -51,8 +51,6 @@ var renderActiveNote = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-  console.log("called");
-
   var newNote = {
     title: $noteTitle.val(),
     text: $noteText.val()
@@ -134,10 +132,16 @@ var getAndRenderNotes = function() {
   });
 };
 
+let pageLoad = function() {
+  location.reload();
+};
+
 $saveNoteBtn.on("click", handleNoteSave);
+$saveNoteBtn.on("click", pageLoad);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
+$noteList.on("click", ".delete-note", pageLoad);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
 
