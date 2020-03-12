@@ -6,6 +6,8 @@ const fs = require("fs");
 
 //Initializing Express and our PORT
 let app = express();
+//Getting our index.js file
+app.use("/assets", express.static(__dirname + "/assets"));
 //Also leaving the logic in for when we deploy to Heroku
 let PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +23,7 @@ app.get("/", function(req, res) {
 app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "notes.html"));
 });
-//Where our saved notes live! (For now)
+// //Where our saved notes live! (For now)
 app.get("/api/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "db.json"));
 });
@@ -29,7 +31,24 @@ app.get("/api/notes", function(req, res) {
 app.post("/api/notes", function(req, res) {
   let newNote = req.body;
 
-  console.log(newNote);
+  fs.readFile("./db.json", "utf8", function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(data);
+    let updatedDB = JSON.parse(data);
+    // console.log(updatedDB);
+
+    fs.appendFile("./db.json", JSON.stringify(), function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("File successfully overwritten!");
+      }
+    });
+  });
+
+  // console.log(newNote);
 });
 //// A function for saving a note to the db
 // let saveNote = function(note) {
