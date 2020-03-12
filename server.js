@@ -29,35 +29,32 @@ app.get("/api/notes", function(req, res) {
 });
 //Posting a new note to our "database"
 app.post("/api/notes", function(req, res) {
+  //Grabbing request information
   let newNote = req.body;
-
+  //Reading db.json to get existing information
   fs.readFile("./db.json", "utf8", function(err, data) {
     if (err) {
       console.log(err);
     }
+    //Parsing file
     let parsedData = JSON.parse(data);
-    parsedData["saved"].push(newNote);
+    //Giving the note a unique ID number
+    newNote.ID = parsedData.length + 1;
+    //Pushing new note object from POST request into saved array in db.json
+    parsedData.push(newNote);
     console.log(parsedData);
-
+    //Writing newly generated database object to db.json
     fs.writeFile("./db.json", JSON.stringify(parsedData), function(err) {
       if (err) {
         console.log(err);
       } else {
-        console.log("File successfully overwritten!");
+        console.log("File successfully overwritten");
       }
     });
   });
 
-  console.log(newNote);
+  // console.log(newNote);
 });
-//// A function for saving a note to the db
-// let saveNote = function(note) {
-//     return $.ajax({
-//       url: "/api/notes",
-//       data: note,
-//       method: "POST"
-//     });
-//   };
 
 app.listen(PORT, function() {
   console.log(`Listening at: http://localhost:${PORT}`);
