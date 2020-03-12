@@ -35,11 +35,11 @@ app.post("/api/notes", function(req, res) {
     if (err) {
       console.log(err);
     }
-    console.log(data);
-    let updatedDB = JSON.parse(data);
-    // console.log(updatedDB);
+    let parsedData = JSON.parse(data);
+    parsedData["saved"].push(newNote);
+    console.log(parsedData);
 
-    fs.appendFile("./db.json", JSON.stringify(), function(err) {
+    fs.writeFile("./db.json", JSON.stringify(parsedData), function(err) {
       if (err) {
         console.log(err);
       } else {
@@ -48,7 +48,7 @@ app.post("/api/notes", function(req, res) {
     });
   });
 
-  // console.log(newNote);
+  console.log(newNote);
 });
 //// A function for saving a note to the db
 // let saveNote = function(note) {
