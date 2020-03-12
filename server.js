@@ -42,7 +42,7 @@ app.post("/api/notes", function(req, res) {
     parsedData.push(newNote);
     //Giving the note a unique ID number
     for (let note of parsedData) {
-      note.id = parsedData.indexOf(note);
+      note.id = parsedData.indexOf(note) + 1;
     }
     //Writing newly generated database object to db.json
     fs.writeFile("./db.json", JSON.stringify(parsedData), function(err) {

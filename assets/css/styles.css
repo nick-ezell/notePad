@@ -78,7 +78,7 @@ body {
 }
 
 textarea {
-  margin-top: 2.79vh;
+  margin-top: 1.8vh;
   line-height: 50px;
 }
 
@@ -95,11 +95,11 @@ textarea {
 
 @media only screen and (max-width: 820px) {
   textarea {
-    line-height: 50px;
+    line-height: 55px;
   }
   .note-title {
     font-size: xx-large;
-    margin-top: 14.69vh;
+    margin-top: 15.1vh;
   }
   .list-group-item {
     font-size: x-small;
