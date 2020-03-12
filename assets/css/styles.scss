@@ -86,22 +86,32 @@ textarea {
 #notePad {
   background-image: url("../notepad.png");
   background-size: cover;
+  overflow-x: scroll;
 }
 
 @media only screen and (max-width: 820px) {
-  textarea {
-    line-height: 55px;
-  }
+  // textarea {
+  //   line-height: 55px;
+  // }
   .note-title {
     font-size: xx-large;
     margin-top: 15.1vh;
   }
   .list-group-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
     font-size: x-small;
   }
   .list-group {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  i {
+    padding-top: 0.25em;
   }
 }
