@@ -76,10 +76,6 @@ body {
   cursor: pointer;
 }
 
-.pencil {
-  color: #5c6274;
-}
-
 textarea {
   margin-top: 1.8vh;
   line-height: 50px;
@@ -156,13 +152,30 @@ textarea {
             align-items: center;
   }
   #brandName {
-    visibility: hidden;
+    display: none;
   }
   .col-4 {
     padding-right: 0;
   }
   .delete-note {
     margin-left: 0.15em;
+  }
+  #pencil {
+    color: #5c6274;
+    font-family: "Kalam", cursive;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=styles.css.map */
