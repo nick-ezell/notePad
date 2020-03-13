@@ -47,7 +47,7 @@ body {
 }
 
 .list-container .card {
-  height: calc(100vh - 70px);
+  height: calc(100vh - 58px);
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
@@ -66,15 +66,18 @@ body {
 }
 
 .list-container i {
-  font-size: 1.1rem;
   cursor: pointer;
 }
 
 .list-container .list-group-item {
   border-left: none;
   border-right: none;
-  padding: 20px;
+  padding: 17.5px;
   cursor: pointer;
+}
+
+.pencil {
+  color: #5c6274;
 }
 
 textarea {
@@ -92,12 +95,19 @@ textarea {
   background-image: url("../notepad.png");
   background-size: cover;
   overflow-x: scroll;
+  font-family: "Kalam", cursive;
 }
 
 @media only screen and (max-width: 820px) {
+  body {
+    margin: 0;
+  }
   .note-title {
     font-size: xx-large;
     margin-top: 15.1vh;
+  }
+  .note-text {
+    padding-top: 0.69em;
   }
   .list-group-item {
     display: -webkit-box;
@@ -109,13 +119,14 @@ textarea {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-orient: vertical;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    font-size: x-small;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    font-size: 0.69em;
+    width: 100%;
   }
   .list-group {
     display: -webkit-box;
@@ -128,8 +139,10 @@ textarea {
         -ms-flex-align: center;
             align-items: center;
   }
-  i {
+  .icons i {
     padding-top: 0.25em;
+    margin-left: 0.075em;
+    font-size: 0.75rem;
   }
   #brand {
     display: -webkit-box;
@@ -141,6 +154,15 @@ textarea {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+  #brandName {
+    visibility: hidden;
+  }
+  .col-4 {
+    padding-right: 0;
+  }
+  .delete-note {
+    margin-left: 0.15em;
   }
 }
 /*# sourceMappingURL=styles.css.map */
